@@ -10,6 +10,10 @@ namespace Kontur.Courses.Git
 				return lastResult;
 			if (args.Length == 1)
 				return lastResult = double.Parse(args[0]);
+			if (args.Length == 2)
+			{
+				return lastResult = Execute(args[0], lastResult.Value, double.Parse(args[1]));
+            }
 			if (args.Length == 3)
 			{
 				var v1 = double.Parse(args[0]);
@@ -26,7 +30,7 @@ namespace Kontur.Courses.Git
 			if (op == "-")
 				return v1 - v2;
 			if (op == "*")
-				return v1 - v2;
+				return v1 * v2;
 			if (op == "/")
 				return v1 / v2;
 			return Maybe<double>.FromError("Unknown operation '{0}'", op);
